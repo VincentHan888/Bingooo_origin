@@ -1,0 +1,69 @@
+---
+
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		{ import.meta.env.HEAD_SCRIPTS ? <Fragment set:html={import.meta.env.HEAD_SCRIPTS} /> : null }
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--c-bg: #000000;
+		--c-fg: #b3b3b3;
+		--c-scroll: #000000;
+		--c-scroll-hover: #bbbbbb;
+		scrollbar-color: var(--c-scrollbar) var(--c-bg);
+	}
+
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: var(--c-bg);
+		color: var(--c-fg);
+		background-image: url('https://bingooo.oss-cn-beijing.aliyuncs.com/AI%20stuff/tiny/blackground'); 
+		background-position: center;
+		background-size: cover;
+		background-attachment: fixed;
+		height:1080px;
+
+		
+	}
+
+
+
+	main {
+		max-width: 70ch;
+		margin: 0 auto;
+		padding: 6rem 2rem 4rem;
+	}
+
+	::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: var(--c-scroll);
+		border-radius: 4px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background-color: var(--c-scroll-hover);
+	}
+	::-webkit-scrollbar-track {
+		background-color: var(--c-bg);
+	}
+</style>
